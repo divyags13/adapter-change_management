@@ -183,6 +183,7 @@ healthcheck(callback) {
      * Note how the object was instantiated in the constructor().
      * get() takes a callback function.
      */
+     connector.get();
   }
 
   /**
@@ -201,6 +202,7 @@ healthcheck(callback) {
      * Note how the object was instantiated in the constructor().
      * post() takes a callback function.
      */
+     connector.post();
   }
 }
 
