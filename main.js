@@ -101,6 +101,7 @@ healthcheck(callback) {
     * or the instance was hibernating. You must write
     * the blocks for each branch.
     */
+      
    if (error) {
      /**
       * Write this block.
@@ -187,7 +188,12 @@ healthcheck(callback) {
      * Note how the object was instantiated in the constructor().
      * get() takes a callback function.
      */
-      connector.get();
+    connector.get((data, error) => {
+     if (error) {
+     console.error(`\nError returned from GET request:\n${JSON.stringify(error)}`);
+     }
+     console.log(`\nResponse returned from GET request:\n${JSON.stringify(data)}`)
+     });
   }
 
   /**
@@ -206,7 +212,12 @@ healthcheck(callback) {
      * Note how the object was instantiated in the constructor().
      * post() takes a callback function.
      */
-     connector.post();
+     connector.post((data, error) => {
+     if (error) {
+      console.error(`\nError returned from POST request:\n${JSON.stringify(error)}`);
+     }
+      console.log(`\nResponse returned from POST request:\n${JSON.stringify(data)}`)
+     });
   }
 }
 
