@@ -80,7 +80,7 @@ class ServiceNowAdapter extends EventEmitter {
   connect() {
     // As a best practice, Itential recommends isolating the health check action
     // in its own method.
-    this.healthcheck();
+    this.healthcheck(callback);
   }
 
  /**
@@ -115,6 +115,7 @@ healthcheck(callback) {
       * for the callback's errorMessage parameter.
       */
       this.emitOffline();
+      log.error('ServiceNow Instance is unavailable for the instance id:', this.id);
    } else {
      /**
       * Write this block.
@@ -127,6 +128,7 @@ healthcheck(callback) {
       * responseData parameter.
       */
       this.emitOnline();
+      log.debug('ServiceNow Instance is available for the instance id:', this.id);
    }
  });
 }
